@@ -2,9 +2,20 @@ import React from 'react';
 import './Login.css'
 
 const Login = () => {
+
+
+    const handleLogin = event =>{
+        event.preventDefault()
+
+        const form = event.target;
+        const email = form.email.value;
+        const pass = form.password.value;
+        console.log(email, pass)
+    }
+
     return (
         <div>
-            <form className='md:w-1/2 mx-auto bg-slate-100 my-10 py-12 rounded'>
+            <form onSubmit={handleLogin} className='w-full md:w-1/2 mx-auto bg-slate-100 my-10 py-12 rounded'>
                 <div className='ml-4 '>
                     <label htmlFor="email">Email:</label> <br />
                     <input className='py-2 mt-2 px-3 width-res rounded shadow'
