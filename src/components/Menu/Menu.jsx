@@ -15,6 +15,7 @@ const Menu = () => {
                         <li><Link to="/">My Toys</Link></li>
                         <li><Link to="/">Add A Toy</Link></li>
                         <li><Link to="/">Blogs</Link></li>
+                        <li><Link to="/login">Login</Link></li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl"> <span> <img src="/src/assets/car.png" width={45} className='mr-3' alt="" /> </span> <span className='font-bold text-3xl text-white'>Car <span className='text-orange-900'>Toys</span> </span> </a>
@@ -26,6 +27,7 @@ const Menu = () => {
                     <li><Link to="/">My Toys</Link></li>
                     <li><Link to="/">Add A Toy</Link></li>
                     <li><Link to="/">Blogs</Link></li>
+                    <li><Link to="/login">Login</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">

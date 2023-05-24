@@ -1,0 +1,8 @@
+.width-res{
+    width: 95%;
+}
+.login-btn:hover{
+    background-color: rgb(0, 72, 100);
+    transition: 0.4s;
+    cursor: pointer;
+}

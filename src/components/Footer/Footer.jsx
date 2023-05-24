@@ -35,7 +35,7 @@ const Footer = () => {
                 </div>
 
             </footer>
-            <p className='bg-sky-700'>Copyright © 2023 - All right reserved</p>
+            <p className='bg-sky-700 text-center p-1'>Copyright © 2023 - All right reserved</p>
         </div>
     );
 };
