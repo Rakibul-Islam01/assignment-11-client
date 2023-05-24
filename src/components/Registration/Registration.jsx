@@ -1,51 +1,57 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 
 const Registration = () => {
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
 
-    const [success, setSucceess] = useState("")
-    const [error, setError] = useState("")
+    const {createUser} = useContext(AuthContext);
 
-    const {createUser} = useContext(AuthContext)
-    // console.log(createUser)
-
+    
     const handleRegister = event =>{
-        event.preventDefault()
+        event.preventDefault();
 
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
-        const pass = form.password.value;
+        const password = form.password.value;
         const photoUrl = form.photoUrl.value;
+        // console.log(name, email, password, photoUrl)
 
-        // console.log(name,email, pass, photoUrl)
-
-        createUser(email, pass)
-        .then(result => {
-            const loggeduser = result.user;
-            console.log('created user', loggeduser)
-            setSucceess("User created successfully")
-            updateUserData(result.user, name, photoUrl)
+        setError('')
+        createUser( email, password)
+        .then(result =>{
+            const createdUser = result.user;
+            console.log(createdUser)
+            handleUpdateUser(result.user, name, photoUrl)
+            form.reset()
+            setSuccess("User has been created successfully")
         })
         .catch(error =>{
-            console.log(error)
-            setError(error)
+            // console.log(error)
         })
 
-        const updateUserData = (user, name, photoUrl) =>{
-            updateProfile(user, {
-                displayName: name, photoURL: photoUrl,
-            })
-            .then(()=>{
-                console.log('user updated')
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        if(password.length <6){
+            setError('Password should be at least 6 characters')
+            return;
         }
     }
+
+    const handleUpdateUser=(user, name, photoUrl)=>{
+        updateProfile(user, {
+            displayName: name, photoURL: photoUrl
+        })
+        .then(()=>{
+            console.log('user name and photo updated')
+        })
+        .catch(error=>{
+            setError(error.message)
+        })
+    }
+
 
     return (
         <div>
@@ -86,9 +92,13 @@ const Registration = () => {
                     /><br /><br />
                     <input className='border login-btn bg-sky-700 text-white py-2 px-4 text-xl rounded' type="submit" value="Register" />
                 </div>
+                
+                <p className='text-green-700 text-center'>{success}</p>
+                <p className='text-red-700 text-center'>{error}</p>
+
+                <p className='text-center mt-3'>Already Registered? Please <Link className='border-2 px-2' to="/login">Login</Link> here </p>
             </form>
-            <p>{setSucceess}</p>
-            <p>{setError}</p>
+           
         </div>
     );
 };

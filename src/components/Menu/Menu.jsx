@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import './Menu.css'
+import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 
 const Menu = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut=()=>{
+        logOut();
+    }
+
     return (
         <div className="navbar text-gray-700 bg-sky-600">
             <div className="navbar-start">
@@ -16,7 +25,7 @@ const Menu = () => {
                         <li><Link to="/">Add A Toy</Link></li>
                         <li><Link to="/">Blogs</Link></li>
                         <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/register">Register</Link></li>
+
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl"> <span> <img src="/src/assets/car.png" width={45} className='mr-3' alt="" /> </span> <span className='font-bold text-3xl text-white'>Car <span className='text-orange-900'>Toys</span> </span> </a>
@@ -29,11 +38,13 @@ const Menu = () => {
                     <li><Link to="/">Add A Toy</Link></li>
                     <li><Link to="/">Blogs</Link></li>
                     <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/register">Register</Link></li>
+
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Get started</a>
+                {
+                    user ? <> <button className='btn btn-secondary' onClick={handleLogOut}>Logout</button>  <img className='photoUrl ms-2' src={user.photoURL} alt="" /></> : <Link to="/login"><button className='btn btn-danger'>Login</button></Link>
+                }
             </div>
         </div>
     );
