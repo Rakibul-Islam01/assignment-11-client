@@ -17,7 +17,7 @@ const Menu = () => {
                         <li><Link to="/">Blogs</Link></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl"> <span> <img src="/src/assets/favicon.png" width={45} className='mr-3' alt="" /> </span> <span className='font-bold text-3xl text-orange-400'>Car Toys</span> </a>
+                <a className="btn btn-ghost normal-case text-xl"> <span> <img src="/src/assets/favicon.png" width={45} className='mr-3' alt="" /> </span> <span className='font-bold text-3xl text-white'>Car <span className='text-orange-900'>Toys</span> </span> </a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
