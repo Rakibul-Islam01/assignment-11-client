@@ -2,20 +2,25 @@ import React, { useContext, useState } from 'react';
 import './Login.css'
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import app from '../../firebase.config';
 
 const Login = () => {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
 
-    const {signIn} = useContext(AuthContext)
+    const auth = getAuth(app)
+    const googleProvider = new GoogleAuthProvider();
 
-    const handleLogin = event =>{
+    const { signIn } = useContext(AuthContext)
+
+    const handleLogin = event => {
         event.preventDefault()
 
         const form = event.target;
         const email = form.email.value;
         const pass = form.password.value;
-        console.log(email, pass)
+        // console.log(email, pass)
 
         setError('')
         signIn(email, pass)
@@ -28,8 +33,21 @@ const Login = () => {
 
             })
             .catch(error => {
-                setError(error)
+                setError("Wrong password!")
                 return;
+            })
+
+    }
+
+
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, googleProvider)
+            .then(result => {
+                const loggedUser = result.user;
+                // console.log(loggedUser)
+            })
+            .then(error => {
+                setError(error)
             })
     }
 
@@ -59,6 +77,9 @@ const Login = () => {
                 <p className='text-red-700 text-center'>{error}</p>
                 <p className='text-center mt-3'>Haven't an account? Please <Link className='border-2 px-2 underline' to="/register">Register</Link> here </p>
             </form>
+            <div className='goggle'>
+                <a className='border' onClick={handleGoogleSignIn}>Login With Google</a>
+            </div>
         </div>
     );
 };

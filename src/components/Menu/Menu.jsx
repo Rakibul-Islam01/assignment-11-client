@@ -43,7 +43,7 @@ const Menu = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user ? <> <button className='btn btn-secondary' onClick={handleLogOut}>Logout</button>  <img className='photoUrl ms-2' src={user.photoURL} alt="" /></> : <Link to="/login"><button className='btn btn-danger'>Login</button></Link>
+                    user ? <> <button className='bg-sky-700 text-white py-2 px-4 text-xl rounded hover:bg-sky-900' onClick={handleLogOut}>Logout</button>  <img className='photoUrl ms-2' src={user.photoURL} alt="" /></> : <Link to="/login"><button className='bg-sky-700 text-white py-2 px-4 text-xl rounded hover:bg-sky-900'>Login</button></Link>
                 }
             </div>
         </div>

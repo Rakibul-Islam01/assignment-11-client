@@ -10,7 +10,7 @@ const Banner = () => {
                 <div className='text-left md:w-1/2'>
                     <h1 className="text-5xl font-bold">Box Office News!</h1>
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button className="btn btn-primary">Explore More!</button>
+                    <button className="bg-sky-700 text-white py-2 px-4 text-xl rounded hover:bg-sky-900">Explore More!</button>
                 </div>
             </div>
         </div>
