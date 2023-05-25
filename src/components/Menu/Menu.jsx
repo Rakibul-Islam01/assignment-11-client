@@ -36,7 +36,7 @@ const Menu = () => {
                     <li><Link to="/">All Toys</Link></li>
                     <li><Link to="/">My Toys</Link></li>
                     <li><Link to="/">Add A Toy</Link></li>
-                    <li><Link to="/">Blogs</Link></li>
+                    <li><Link to="/blog">Blogs</Link></li>
                     <li><Link to="/login">Login</Link></li>
 
                 </ul>
