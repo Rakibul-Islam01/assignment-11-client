@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
+import ToyRow from '../ToyRow/ToyRow';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -13,43 +14,50 @@ const MyToys = () => {
             .then(data => setMyToys(data))
     }, [url])
     console.log(myToys)
+    let index = 1;
     return (
 
         <div>
-            <h2>My Toys page: {myToys.length}</h2>
+            {/* <h2>My Toys page: {myToys.length}</h2> */}
+
+            <h2 className='text-2xl font-semibold text-sky-900 text-center mt-12 mb-8'>MY TOYS</h2>
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table text-center w-full">
                     {/* head*/}
                     <thead>
                         <tr>
                             <th>NO</th>
+                            <th>Picture</th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Sub-Category</th>
+                            <th>Available Quantity</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        {/* row 2 */}
-                        <tr className="active">
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        {/* row 3 */}
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
+                        {
+                            myToys.map(myToy => <>
+                                <tr>
+                                    <th>{index++}</th>
+                                    <td>
+                                        <div><img className='' height={50} width={50} src={myToy.toyPic} alt="" /></div>
+                                    </td>
+                                    <td>{myToy.toyName}</td>
+                                    <td>{myToy.subCategory}</td>
+                                    <td>{myToy.quantity}</td>
+                                    <td>${myToy.price}</td>
+                                    <td>
+                                        <button className='btn'>UPDATE</button>
+                                    </td>
+                                    <td>
+                                        <button className='btn'>DELETE</button>
+                                    </td>
+                                </tr>
+                            </>)
+                        }
                     </tbody>
                 </table>
             </div>

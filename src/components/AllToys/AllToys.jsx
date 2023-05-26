@@ -3,7 +3,8 @@ import { useLoaderData } from 'react-router-dom';
 
 const AllToys = () => {
     const toys = useLoaderData()
-    // console.log(toys)
+
+    console.log(toys)
     return (
         <div>
             <h2>The number of toys: {toys.length}</h2>
