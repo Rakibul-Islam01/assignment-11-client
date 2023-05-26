@@ -7,7 +7,7 @@ const Menu = () => {
 
     const { user, logOut } = useContext(AuthContext)
 
-    const handleLogOut=()=>{
+    const handleLogOut = () => {
         logOut();
     }
 
@@ -20,11 +20,15 @@ const Menu = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/">All Toys</Link></li>
-                        <li><Link to="/">My Toys</Link></li>
-                        <li><Link to="/">Add A Toy</Link></li>
+                        <li><Link to="/alltoy">All Toys</Link></li>
+                        {
+                            user && <li><Link to="/mytoy">My Toys</Link></li>
+                        }
+                        {
+                            user && <li><Link to="/addtoy">Add A Toy</Link></li>
+                        }
                         <li><Link to="/">Blogs</Link></li>
-                        <li><Link to="/login">Login</Link></li>
+                     
 
                     </ul>
                 </div>
@@ -33,17 +37,22 @@ const Menu = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/">All Toys</Link></li>
-                    <li><Link to="/">My Toys</Link></li>
-                    <li><Link to="/">Add A Toy</Link></li>
+                    <li><Link to="/alltoy">All Toys</Link></li>
+                    {
+                        user && <li><Link to="/mytoy">My Toys</Link></li>
+                    }
+                    {
+                        user && <li><Link to="/addtoy">Add A Toy</Link></li>
+                    }
+
                     <li><Link to="/blog">Blogs</Link></li>
-                    <li><Link to="/login">Login</Link></li>
+                   
 
                 </ul>
             </div>
             <div className="navbar-end">
                 {
-                    user ? <> <button className='bg-sky-700 text-white py-2 px-4 text-xl rounded hover:bg-sky-900' onClick={handleLogOut}>Logout</button>  <img className='photoUrl ms-2' src={user.photoURL} alt="" /></> : <Link to="/login"><button className='bg-sky-700 text-white py-2 px-4 text-xl rounded hover:bg-sky-900'>Login</button></Link>
+                    user ? <> <button className='bg-sky-700 text-white py-2 px-4 text-xl rounded hover:bg-sky-900' onClick={handleLogOut}>Logout</button>  <img className='photoUrl ms-2 cursor-pointer' title={`${user.displayName}`} src={user.photoURL} alt="" /></> : <Link to="/login"><button className='bg-sky-700 text-white py-2 px-4 text-xl rounded hover:bg-sky-900'>Login</button></Link>
                 }
             </div>
         </div>

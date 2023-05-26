@@ -13,6 +13,10 @@ import Login from './components/Login/Login.jsx';
 import Registration from './components/Registration/Registration.jsx';
 import AuthProvider from './Provider/AuthProvider/AuthProvider.jsx';
 import Blogs from './components/Blogs/Blogs.jsx';
+import AddToy from './components/AddToy/AddToy.jsx';
+import MyToys from './components/MyToys/MyToys.jsx';
+import AllToys from './components/AllToys/AllToys.jsx';
+import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,8 +36,21 @@ const router = createBrowserRouter([
         element: <Registration></Registration>
       },
       {
+        path: '/alltoy',
+        element: <AllToys></AllToys>,
+        loader: ()=> fetch('http://localhost:5000/toys')
+      },
+      {
         path: "/blog",
         element: <Blogs></Blogs>
+      },
+      {
+        path: "/addtoy",
+        element: <AddToy></AddToy>
+      },
+      {
+        path: "mytoy",
+        element: <PrivateRoute><MyToys></MyToys></PrivateRoute> 
       }
     ]
   },
