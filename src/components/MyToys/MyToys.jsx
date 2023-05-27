@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 import ToyRow from '../ToyRow/ToyRow';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -14,7 +15,44 @@ const MyToys = () => {
             .then(res => res.json())
             .then(data => setMyToys(data))
     }, [url])
-    // console.log(myToys)
+
+
+
+    const handleDelete=(_id)=>{
+        console.log(_id)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            
+            console.log('confirmed')
+            fetch(`http://localhost:5000/toys/${_id}`, {
+                method: "DELETE"
+            })
+            .then(res => res.json())
+            .then(data =>{
+                console.log(data)
+                if(data.deletedCount > 0){
+                    Swal.fire(
+                        'Deleted!',
+                        'Your car item has been deleted.',
+                        'success'
+                      )
+                      const remaining = myToys.filter(myToy => myToy._id !== _id)
+                      setMyToys(remaining)
+                }
+            })
+            }
+          })
+    }
+
+
     let index = 1;
     return (
 
@@ -55,7 +93,7 @@ const MyToys = () => {
                                         
                                     </td>
                                     <td>
-                                        <button className='btn btn-sm'>DELETE</button>
+                                        <button onClick={()=>handleDelete(myToy._id)} className='btn btn-sm'>DELETE</button>
                                     </td>
                                 </tr>
                             </>)
