@@ -1,12 +1,20 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import CarToyTabs from '../CarToyTabs/CarToyTabs';
+import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
+import CarRow from '../CarRow/CarRow';
 
+
+let index = 0;
 const AllToys = () => {
     const toys = useLoaderData()
-    // console.log(toys)
+    const {user, loading} = useContext(AuthContext)
 
-    let index = 1;
+        if(loading){
+            return <progress className="progress w-56 block mx-auto h-3 my-12"> </progress>
+        }
+    
+    // let index = 1;
     return (
         <div>
             {/* <h2>The number of toys: {toys.length}</h2> */}
@@ -28,20 +36,7 @@ const AllToys = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            toys.map(myToy => <>
-                                <tr>
-                                    <th>{index++}</th>
-                                    <td>{myToy.sellerName}</td>
-                                    <td>{myToy.toyName}</td>
-                                    <td>{myToy.subCategory}</td>
-                                    <td>{myToy.quantity}</td>
-                                    <td>${myToy.price}</td>
-                                    <td>
-                                        <button className='btn btn-sm'>VIEW DETAILS</button>
-                                    </td>
-                                   
-                                </tr>
-                            </>)
+                            toys?.map((myToy, index) => <CarRow myToy={myToy} index={index+1}></CarRow>)
                         }
                     </tbody>
                 </table>

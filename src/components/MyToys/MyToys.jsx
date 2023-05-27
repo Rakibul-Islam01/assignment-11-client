@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 import ToyRow from '../ToyRow/ToyRow';
+import { Link } from 'react-router-dom';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
-    console.log(user)
+    // console.log(user)
     const [myToys, setMyToys] = useState([])
 
     let url = `http://localhost:5000/mytoys?sellerEmail=${user?.email}`
@@ -13,7 +14,7 @@ const MyToys = () => {
             .then(res => res.json())
             .then(data => setMyToys(data))
     }, [url])
-    console.log(myToys)
+    // console.log(myToys)
     let index = 1;
     return (
 
@@ -50,7 +51,8 @@ const MyToys = () => {
                                     <td>{myToy.quantity}</td>
                                     <td>${myToy.price}</td>
                                     <td>
-                                        <button className='btn btn-sm'>UPDATE</button>
+                                        <Link to={`/updatecar/${myToy._id}`}><button className='btn btn-sm'>UPDATE</button></Link>
+                                        
                                     </td>
                                     <td>
                                         <button className='btn btn-sm'>DELETE</button>
