@@ -7,7 +7,7 @@ const Footer = () => {
             <footer className="footer p-10 bg-sky-600 text-base-content">
                 <div>
                     <img src="/src/assets/car.png" width={80} className='mx-auto' alt="" />
-                    <p>Car Toys Industries Ltd.<br />Providing quality car toys since 1992</p>
+                    <p> <span className='font-bold text-xl'>Toy Hub</span>  Industries Ltd.<br />Providing quality car toys since 1992</p>
                 </div>
                 <div>
                     <span className="footer-title">Contact</span>

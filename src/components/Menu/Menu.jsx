@@ -32,7 +32,7 @@ const Menu = () => {
 
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl"> <span> <img src="/src/assets/car.png" width={45} className='mr-3' alt="" /> </span> <span className='font-bold text-3xl text-white'>Car <span className='text-orange-900'>Toys</span> </span> </a>
+                <Link to="/" className="btn btn-ghost normal-case text-xl"> <span> <img src="/src/assets/car.png" width={45} className='mr-3' alt="" /> </span> <span className='font-bold text-3xl text-white car-name'>Toy <span className='text-orange-900'>Hub</span> </span> </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

@@ -23,7 +23,10 @@ const CarRow = ({ myToy, index }) => {
             <td>{myToy.quantity}</td>
             <td>${myToy.price}</td>
             <td>
-                <Link to={`/toy/${_id}`}> <button className='btn btn-sm'>VIEW DETAILS</button> </Link>
+                {
+                    <Link to={`/toy/${_id}`}> <button className='btn btn-sm'>VIEW DETAILS</button> </Link> 
+                }
+                
             </td>
 
         </tr>

@@ -19,6 +19,7 @@ import AllToys from './components/AllToys/AllToys.jsx';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 import CarDetails from './components/CarDetails/CarDetails.jsx';
 import UpdateCar from './components/UpdateCar/UpdateCar.jsx';
+import NotFound from './NotFound/NotFound.jsx';
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/toy/:_id',
-        element: <CarDetails></CarDetails>,
+        element: <PrivateRoute><CarDetails></CarDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/toys/${params._id}`)
       },
       {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:"*",
+    element: <NotFound></NotFound>
+  }
 ]);
 
 

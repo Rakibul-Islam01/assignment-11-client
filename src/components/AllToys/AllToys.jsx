@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, Navigate, useLoaderData } from 'react-router-dom';
 import CarToyTabs from '../CarToyTabs/CarToyTabs';
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 import CarRow from '../CarRow/CarRow';
@@ -35,8 +35,8 @@ const AllToys = () => {
                     </thead>
                     <tbody>
                         {/* row 1 */}
-                        {
-                            toys?.map((myToy, index) => <CarRow myToy={myToy} index={index+1}></CarRow>)
+                        { 
+                            toys?.map((myToy, index) => <CarRow myToy={myToy} index={index+1}></CarRow>) 
                         }
                     </tbody>
                 </table>
