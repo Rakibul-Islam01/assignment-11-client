@@ -4,7 +4,8 @@ import 'react-tabs/style/react-tabs.css';
 import './CarToysTabs.css'
 
 
-const CarToyTabs = () => {
+const CarToyTabs = ({toys}) => {
+    console.log(toys)
     return (
         <div className='my-12 mx-auto'>
 
