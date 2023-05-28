@@ -9,7 +9,7 @@ const Banner = () => {
                 </div>
                 <div className='text-left md:w-1/2'>
                     <h1 className="text-5xl font-bold">You will see the car toy update here</h1>
-                    <p className="py-6">Buy toy cars, toy bikes, and toy trains for kids at the lowest prices on Flipkart.com. Get the best deals & offers on cars, trains & bikes toys.</p>
+                    <p className="py-6">Buy toy cars, toy bikes, and toy trains for kids at the lowest prices on toyhub.com. Get the best deals & offers on cars, trains & bikes toys.</p>
                     <button className="bg-sky-700 text-white py-2 px-4 text-xl rounded hover:bg-sky-900">Explore Our Toy Hub!</button>
                 </div>
             </div>
