@@ -9,7 +9,7 @@ const MyToys = () => {
     // console.log(user)
     const [myToys, setMyToys] = useState([])
 
-    let url = `http://localhost:5000/mytoys?sellerEmail=${user?.email}`
+    let url = `http://car-toys-server-pi.vercel.app/mytoys?sellerEmail=${user?.email}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -32,7 +32,7 @@ const MyToys = () => {
             if (result.isConfirmed) {
             
             console.log('confirmed')
-            fetch(`http://localhost:5000/toys/${_id}`, {
+            fetch(`http://car-toys-server-pi.vercel.app/toys/${_id}`, {
                 method: "DELETE"
             })
             .then(res => res.json())
